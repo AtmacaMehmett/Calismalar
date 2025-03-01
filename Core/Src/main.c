@@ -72,7 +72,7 @@ int main(void)
 
 
 
-	//char pressed_key = '\0';
+	char pressed_key = '\0';
 
 	//int atis_butonu=0;
 	//int button_state=0;
@@ -99,6 +99,7 @@ int main(void)
 	MX_GPIO_Init();
 	/* USER CODE BEGIN 2 */
 
+
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
@@ -108,30 +109,28 @@ int main(void)
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
-		char gorev = Read_Keypad();
+		pressed_key = Read_Keypad();
 
-		// LED kontrolü için tuşlara göre işlem yapıyoruz
-		if (gorev == '1') {
-			HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);  // 1'e basıldığında LED1 yanacak
-		}
-		else if (gorev == '2') {
-			HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, GPIO_PIN_SET);  // 2'ye basıldığında LED2 yanacak
-		}
-		else if (gorev == 'H') {  // 1 ve 3'e aynı anda basıldığında
-			HAL_GPIO_WritePin(LED3_GPIO_Port, LED3_Pin, GPIO_PIN_SET);  // LED4 yanacak
-		}
-		else if (gorev == 'M') {  // 1 ve 6'ya aynı anda basıldığında
-			HAL_GPIO_WritePin(LED4_GPIO_Port, LED4_Pin, GPIO_PIN_SET);  // LED4 yanacak
-		}
-		else {
-			// Eğer hiç bir tuşa basılmamışsa, tüm LED'leri kapatıyoruz
-			HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LED3_GPIO_Port, LED3_Pin, GPIO_PIN_RESET);
-			HAL_GPIO_WritePin(LED4_GPIO_Port, LED4_Pin, GPIO_PIN_RESET);
-		}
+		if (pressed_key != '\0') { // Eğer bir tuşa basıldıysa
+			// Basılan tuşa göre işlem yapma
+			switch (pressed_key) {
+			case '1':
+				GPIO_WRITE(LED1,ON);
+				break;
+			case '2':
+				GPIO_WRITE(LED2,ON);
+				break;
+			case 'H':
+				GPIO_WRITE(LED3,ON);
+				break;
+			case 'M':
+				GPIO_WRITE(LED4,ON);
+				break;
+			default:
 
-		HAL_Delay(500);
+				break;
+			}
+		}
 
 
 	}
