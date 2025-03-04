@@ -59,7 +59,7 @@ char Read_Keypad(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+char pressed_key = '\0';
 /* USER CODE END 0 */
 
 /**
@@ -73,7 +73,7 @@ int main(void)
 
 
 
-	char pressed_key = '\0';
+
 
 	//int atis_butonu=0;
 	//int button_state=0;
