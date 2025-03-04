@@ -110,28 +110,6 @@ int main(void)
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
-		//		pressed_key = Read_Keypad();
-		//
-		//		if (pressed_key != '\0') { // Eğer bir tuşa basıldıysa
-		//			// Basılan tuşa göre işlem yapma
-		//			switch (pressed_key) {
-		//			case '1':
-		//				GPIO_WRITE(LED1,ON);
-		//				break;
-		//			case '2':
-		//				GPIO_WRITE(LED2,ON);
-		//				break;
-		//			case 'H':
-		//				GPIO_WRITE(LED3,ON);
-		//				break;
-		//			case 'M':
-		//				GPIO_WRITE(LED4,ON);
-		//				break;
-		//			default:
-		//
-		//				break;
-		//			}
-		//		}
 
 		pressed_key = Read_Keypad();  // Keypad'ten karakter oku
 
