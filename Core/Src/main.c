@@ -52,6 +52,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 /* USER CODE BEGIN PFP */
 
+
 char Read_Keypad(void);
 
 /* USER CODE END PFP */
@@ -109,28 +110,55 @@ int main(void)
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
-		pressed_key = Read_Keypad();
+		//		pressed_key = Read_Keypad();
+		//
+		//		if (pressed_key != '\0') { // Eğer bir tuşa basıldıysa
+		//			// Basılan tuşa göre işlem yapma
+		//			switch (pressed_key) {
+		//			case '1':
+		//				GPIO_WRITE(LED1,ON);
+		//				break;
+		//			case '2':
+		//				GPIO_WRITE(LED2,ON);
+		//				break;
+		//			case 'H':
+		//				GPIO_WRITE(LED3,ON);
+		//				break;
+		//			case 'M':
+		//				GPIO_WRITE(LED4,ON);
+		//				break;
+		//			default:
+		//
+		//				break;
+		//			}
+		//		}
 
-		if (pressed_key != '\0') { // Eğer bir tuşa basıldıysa
-			// Basılan tuşa göre işlem yapma
-			switch (pressed_key) {
-			case '1':
-				GPIO_WRITE(LED1,ON);
-				break;
-			case '2':
-				GPIO_WRITE(LED2,ON);
-				break;
-			case 'H':
-				GPIO_WRITE(LED3,ON);
-				break;
-			case 'M':
-				GPIO_WRITE(LED4,ON);
-				break;
-			default:
+		pressed_key = Read_Keypad();  // Keypad'ten karakter oku
 
-				break;
-			}
+		// Basılan tuşa göre LED'leri kontrol et
+		switch (pressed_key) {
+		case 'H':
+			HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_SET);
+			break;
+		case 'M':
+			HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, GPIO_PIN_SET);
+			break;
+		case '1':
+			HAL_GPIO_WritePin(LED3_GPIO_Port, LED3_Pin, GPIO_PIN_SET);
+			break;
+		case '2':
+			HAL_GPIO_WritePin(LED4_GPIO_Port, LED4_Pin, GPIO_PIN_SET);
+			break;
+			// Diğer durumlar için LED'leri resetle
+		default:
+			HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(LED3_GPIO_Port, LED3_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(LED4_GPIO_Port, LED4_Pin, GPIO_PIN_RESET);
+			break;
 		}
+
+
 
 
 	}
