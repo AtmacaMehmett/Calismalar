@@ -2832,17 +2832,17 @@ LOAD C:/ST/STM32CubeIDE_1.16.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_macro   0x0001edc9      0x1b6 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
  .debug_macro   0x0001ef7f      0x1d4 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
 
-.debug_line     0x00000000     0x5732
- .debug_line    0x00000000      0x89e ./Core/Src/keypad.o
- .debug_line    0x0000089e      0x7ef ./Core/Src/main.o
- .debug_line    0x0000108d      0x706 ./Core/Src/stm32f4xx_hal_msp.o
- .debug_line    0x00001793      0x7c8 ./Core/Src/stm32f4xx_it.o
- .debug_line    0x00001f5b      0x78a ./Core/Src/system_stm32f4xx.o
- .debug_line    0x000026e5       0x7a ./Core/Startup/startup_stm32f407vgtx.o
- .debug_line    0x0000275f      0x9f3 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
- .debug_line    0x00003152      0xce5 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
- .debug_line    0x00003e37      0xb7f ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
- .debug_line    0x000049b6      0xd7c ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+.debug_line     0x00000000     0x5754
+ .debug_line    0x00000000      0x8c0 ./Core/Src/keypad.o
+ .debug_line    0x000008c0      0x7ef ./Core/Src/main.o
+ .debug_line    0x000010af      0x706 ./Core/Src/stm32f4xx_hal_msp.o
+ .debug_line    0x000017b5      0x7c8 ./Core/Src/stm32f4xx_it.o
+ .debug_line    0x00001f7d      0x78a ./Core/Src/system_stm32f4xx.o
+ .debug_line    0x00002707       0x7a ./Core/Startup/startup_stm32f407vgtx.o
+ .debug_line    0x00002781      0x9f3 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_line    0x00003174      0xce5 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_line    0x00003e59      0xb7f ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_line    0x000049d8      0xd7c ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
 
 .debug_str      0x00000000    0xbc871
  .debug_str     0x00000000    0xbb144 ./Core/Src/keypad.o

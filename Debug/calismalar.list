@@ -39,15 +39,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  17 .debug_macro  0001f153  00000000  00000000  00007fd1  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   00005732  00000000  00000000  00027124  2**0
+ 18 .debug_line   00005754  00000000  00000000  00027124  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000bc871  00000000  00000000  0002c856  2**0
+ 19 .debug_str    000bc871  00000000  00000000  0002c878  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .comment      00000043  00000000  00000000  000e90c7  2**0
+ 20 .comment      00000043  00000000  00000000  000e90e9  2**0
                   CONTENTS, READONLY
- 21 .debug_frame  00000ec0  00000000  00000000  000e910c  2**2
+ 21 .debug_frame  00000ec0  00000000  00000000  000e912c  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 22 .debug_line_str 0000005e  00000000  00000000  000e9fcc  2**0
+ 22 .debug_line_str 0000005e  00000000  00000000  000e9fec  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -356,18 +356,18 @@ char Read_Keypad(void) {
  80004b8:	b580      	push	{r7, lr}
  80004ba:	b082      	sub	sp, #8
  80004bc:	af00      	add	r7, sp, #0
-    static uint16_t lastState = 0;  // Önceki tuş durumu
-    uint16_t currentState = 0;
+	static uint16_t lastState = 0;  // Önceki tuş durumu
+	uint16_t currentState = 0;
  80004be:	2300      	movs	r3, #0
  80004c0:	80fb      	strh	r3, [r7, #6]
 
-    // Tüm satırlarda tuşlar kontrol ediliyor
-    GPIO_WRITE(R1, ON);
+	// Tüm satırlarda tuşlar kontrol ediliyor
+	GPIO_WRITE(R1, ON);
  80004c2:	2201      	movs	r2, #1
  80004c4:	f44f 6100 	mov.w	r1, #2048	@ 0x800
  80004c8:	48ab      	ldr	r0, [pc, #684]	@ (8000778 <Read_Keypad+0x2c0>)
  80004ca:	f000 fed5 	bl	8001278 <HAL_GPIO_WritePin>
-    if (READ_INPUT(C1) == ON) currentState |= (1 << 0);  // key1
+	if (READ_INPUT(C1) == ON) currentState |= (1 << 0);  // key1
  80004ce:	2180      	movs	r1, #128	@ 0x80
  80004d0:	48a9      	ldr	r0, [pc, #676]	@ (8000778 <Read_Keypad+0x2c0>)
  80004d2:	f000 feb9 	bl	8001248 <HAL_GPIO_ReadPin>
@@ -377,7 +377,7 @@ char Read_Keypad(void) {
  80004dc:	88fb      	ldrh	r3, [r7, #6]
  80004de:	f043 0301 	orr.w	r3, r3, #1
  80004e2:	80fb      	strh	r3, [r7, #6]
-    if (READ_INPUT(C2) == ON) currentState |= (1 << 1);  // key2
+	if (READ_INPUT(C2) == ON) currentState |= (1 << 1);  // key2
  80004e4:	f44f 7180 	mov.w	r1, #256	@ 0x100
  80004e8:	48a3      	ldr	r0, [pc, #652]	@ (8000778 <Read_Keypad+0x2c0>)
  80004ea:	f000 fead 	bl	8001248 <HAL_GPIO_ReadPin>
@@ -387,7 +387,7 @@ char Read_Keypad(void) {
  80004f4:	88fb      	ldrh	r3, [r7, #6]
  80004f6:	f043 0302 	orr.w	r3, r3, #2
  80004fa:	80fb      	strh	r3, [r7, #6]
-    if (READ_INPUT(C3) == ON) currentState |= (1 << 2);  // key3
+	if (READ_INPUT(C3) == ON) currentState |= (1 << 2);  // key3
  80004fc:	f44f 7100 	mov.w	r1, #512	@ 0x200
  8000500:	489d      	ldr	r0, [pc, #628]	@ (8000778 <Read_Keypad+0x2c0>)
  8000502:	f000 fea1 	bl	8001248 <HAL_GPIO_ReadPin>
@@ -397,7 +397,7 @@ char Read_Keypad(void) {
  800050c:	88fb      	ldrh	r3, [r7, #6]
  800050e:	f043 0304 	orr.w	r3, r3, #4
  8000512:	80fb      	strh	r3, [r7, #6]
-    if (READ_INPUT(C4) == ON) currentState |= (1 << 3);  // keyA
+	if (READ_INPUT(C4) == ON) currentState |= (1 << 3);  // keyA
  8000514:	f44f 6180 	mov.w	r1, #1024	@ 0x400
  8000518:	4897      	ldr	r0, [pc, #604]	@ (8000778 <Read_Keypad+0x2c0>)
  800051a:	f000 fe95 	bl	8001248 <HAL_GPIO_ReadPin>
@@ -407,18 +407,18 @@ char Read_Keypad(void) {
  8000524:	88fb      	ldrh	r3, [r7, #6]
  8000526:	f043 0308 	orr.w	r3, r3, #8
  800052a:	80fb      	strh	r3, [r7, #6]
-    GPIO_WRITE(R1, OFF);
+	GPIO_WRITE(R1, OFF);
  800052c:	2200      	movs	r2, #0
  800052e:	f44f 6100 	mov.w	r1, #2048	@ 0x800
  8000532:	4891      	ldr	r0, [pc, #580]	@ (8000778 <Read_Keypad+0x2c0>)
  8000534:	f000 fea0 	bl	8001278 <HAL_GPIO_WritePin>
 
-    GPIO_WRITE(R2, ON);
+	GPIO_WRITE(R2, ON);
  8000538:	2201      	movs	r2, #1
  800053a:	f44f 5180 	mov.w	r1, #4096	@ 0x1000
  800053e:	488e      	ldr	r0, [pc, #568]	@ (8000778 <Read_Keypad+0x2c0>)
  8000540:	f000 fe9a 	bl	8001278 <HAL_GPIO_WritePin>
-    if (READ_INPUT(C1) == ON) currentState |= (1 << 4);  // key4
+	if (READ_INPUT(C1) == ON) currentState |= (1 << 4);  // key4
  8000544:	2180      	movs	r1, #128	@ 0x80
  8000546:	488c      	ldr	r0, [pc, #560]	@ (8000778 <Read_Keypad+0x2c0>)
  8000548:	f000 fe7e 	bl	8001248 <HAL_GPIO_ReadPin>
@@ -428,7 +428,7 @@ char Read_Keypad(void) {
  8000552:	88fb      	ldrh	r3, [r7, #6]
  8000554:	f043 0310 	orr.w	r3, r3, #16
  8000558:	80fb      	strh	r3, [r7, #6]
-    if (READ_INPUT(C2) == ON) currentState |= (1 << 5);  // key5
+	if (READ_INPUT(C2) == ON) currentState |= (1 << 5);  // key5
  800055a:	f44f 7180 	mov.w	r1, #256	@ 0x100
  800055e:	4886      	ldr	r0, [pc, #536]	@ (8000778 <Read_Keypad+0x2c0>)
  8000560:	f000 fe72 	bl	8001248 <HAL_GPIO_ReadPin>
@@ -438,7 +438,7 @@ char Read_Keypad(void) {
  800056a:	88fb      	ldrh	r3, [r7, #6]
  800056c:	f043 0320 	orr.w	r3, r3, #32
  8000570:	80fb      	strh	r3, [r7, #6]
-    if (READ_INPUT(C3) == ON) currentState |= (1 << 6);  // key6
+	if (READ_INPUT(C3) == ON) currentState |= (1 << 6);  // key6
  8000572:	f44f 7100 	mov.w	r1, #512	@ 0x200
  8000576:	4880      	ldr	r0, [pc, #512]	@ (8000778 <Read_Keypad+0x2c0>)
  8000578:	f000 fe66 	bl	8001248 <HAL_GPIO_ReadPin>
@@ -448,7 +448,7 @@ char Read_Keypad(void) {
  8000582:	88fb      	ldrh	r3, [r7, #6]
  8000584:	f043 0340 	orr.w	r3, r3, #64	@ 0x40
  8000588:	80fb      	strh	r3, [r7, #6]
-    if (READ_INPUT(C4) == ON) currentState |= (1 << 7);  // keyB
+	if (READ_INPUT(C4) == ON) currentState |= (1 << 7);  // keyB
  800058a:	f44f 6180 	mov.w	r1, #1024	@ 0x400
  800058e:	487a      	ldr	r0, [pc, #488]	@ (8000778 <Read_Keypad+0x2c0>)
  8000590:	f000 fe5a 	bl	8001248 <HAL_GPIO_ReadPin>
@@ -458,18 +458,18 @@ char Read_Keypad(void) {
  800059a:	88fb      	ldrh	r3, [r7, #6]
  800059c:	f043 0380 	orr.w	r3, r3, #128	@ 0x80
  80005a0:	80fb      	strh	r3, [r7, #6]
-    GPIO_WRITE(R2, OFF);
+	GPIO_WRITE(R2, OFF);
  80005a2:	2200      	movs	r2, #0
  80005a4:	f44f 5180 	mov.w	r1, #4096	@ 0x1000
  80005a8:	4873      	ldr	r0, [pc, #460]	@ (8000778 <Read_Keypad+0x2c0>)
  80005aa:	f000 fe65 	bl	8001278 <HAL_GPIO_WritePin>
 
-    GPIO_WRITE(R3, ON);
+	GPIO_WRITE(R3, ON);
  80005ae:	2201      	movs	r2, #1
  80005b0:	f44f 5100 	mov.w	r1, #8192	@ 0x2000
  80005b4:	4870      	ldr	r0, [pc, #448]	@ (8000778 <Read_Keypad+0x2c0>)
  80005b6:	f000 fe5f 	bl	8001278 <HAL_GPIO_WritePin>
-    if (READ_INPUT(C1) == ON) currentState |= (1 << 8);  // key7
+	if (READ_INPUT(C1) == ON) currentState |= (1 << 8);  // key7
  80005ba:	2180      	movs	r1, #128	@ 0x80
  80005bc:	486e      	ldr	r0, [pc, #440]	@ (8000778 <Read_Keypad+0x2c0>)
  80005be:	f000 fe43 	bl	8001248 <HAL_GPIO_ReadPin>
@@ -479,7 +479,7 @@ char Read_Keypad(void) {
  80005c8:	88fb      	ldrh	r3, [r7, #6]
  80005ca:	f443 7380 	orr.w	r3, r3, #256	@ 0x100
  80005ce:	80fb      	strh	r3, [r7, #6]
-    if (READ_INPUT(C2) == ON) currentState |= (1 << 9);  // key8
+	if (READ_INPUT(C2) == ON) currentState |= (1 << 9);  // key8
  80005d0:	f44f 7180 	mov.w	r1, #256	@ 0x100
  80005d4:	4868      	ldr	r0, [pc, #416]	@ (8000778 <Read_Keypad+0x2c0>)
  80005d6:	f000 fe37 	bl	8001248 <HAL_GPIO_ReadPin>
@@ -489,7 +489,7 @@ char Read_Keypad(void) {
  80005e0:	88fb      	ldrh	r3, [r7, #6]
  80005e2:	f443 7300 	orr.w	r3, r3, #512	@ 0x200
  80005e6:	80fb      	strh	r3, [r7, #6]
-    if (READ_INPUT(C3) == ON) currentState |= (1 << 10); // key9
+	if (READ_INPUT(C3) == ON) currentState |= (1 << 10); // key9
  80005e8:	f44f 7100 	mov.w	r1, #512	@ 0x200
  80005ec:	4862      	ldr	r0, [pc, #392]	@ (8000778 <Read_Keypad+0x2c0>)
  80005ee:	f000 fe2b 	bl	8001248 <HAL_GPIO_ReadPin>
@@ -499,7 +499,7 @@ char Read_Keypad(void) {
  80005f8:	88fb      	ldrh	r3, [r7, #6]
  80005fa:	f443 6380 	orr.w	r3, r3, #1024	@ 0x400
  80005fe:	80fb      	strh	r3, [r7, #6]
-    if (READ_INPUT(C4) == ON) currentState |= (1 << 11); // keyC
+	if (READ_INPUT(C4) == ON) currentState |= (1 << 11); // keyC
  8000600:	f44f 6180 	mov.w	r1, #1024	@ 0x400
  8000604:	485c      	ldr	r0, [pc, #368]	@ (8000778 <Read_Keypad+0x2c0>)
  8000606:	f000 fe1f 	bl	8001248 <HAL_GPIO_ReadPin>
@@ -509,18 +509,18 @@ char Read_Keypad(void) {
  8000610:	88fb      	ldrh	r3, [r7, #6]
  8000612:	f443 6300 	orr.w	r3, r3, #2048	@ 0x800
  8000616:	80fb      	strh	r3, [r7, #6]
-    GPIO_WRITE(R3, OFF);
+	GPIO_WRITE(R3, OFF);
  8000618:	2200      	movs	r2, #0
  800061a:	f44f 5100 	mov.w	r1, #8192	@ 0x2000
  800061e:	4856      	ldr	r0, [pc, #344]	@ (8000778 <Read_Keypad+0x2c0>)
  8000620:	f000 fe2a 	bl	8001278 <HAL_GPIO_WritePin>
 
-    GPIO_WRITE(R4, ON);
+	GPIO_WRITE(R4, ON);
  8000624:	2201      	movs	r2, #1
  8000626:	f44f 4180 	mov.w	r1, #16384	@ 0x4000
  800062a:	4853      	ldr	r0, [pc, #332]	@ (8000778 <Read_Keypad+0x2c0>)
  800062c:	f000 fe24 	bl	8001278 <HAL_GPIO_WritePin>
-    if (READ_INPUT(C1) == ON) currentState |= (1 << 12); // keyStar
+	if (READ_INPUT(C1) == ON) currentState |= (1 << 12); // keyStar
  8000630:	2180      	movs	r1, #128	@ 0x80
  8000632:	4851      	ldr	r0, [pc, #324]	@ (8000778 <Read_Keypad+0x2c0>)
  8000634:	f000 fe08 	bl	8001248 <HAL_GPIO_ReadPin>
@@ -530,7 +530,7 @@ char Read_Keypad(void) {
  800063e:	88fb      	ldrh	r3, [r7, #6]
  8000640:	f443 5380 	orr.w	r3, r3, #4096	@ 0x1000
  8000644:	80fb      	strh	r3, [r7, #6]
-    if (READ_INPUT(C2) == ON) currentState |= (1 << 13); // key0
+	if (READ_INPUT(C2) == ON) currentState |= (1 << 13); // key0
  8000646:	f44f 7180 	mov.w	r1, #256	@ 0x100
  800064a:	484b      	ldr	r0, [pc, #300]	@ (8000778 <Read_Keypad+0x2c0>)
  800064c:	f000 fdfc 	bl	8001248 <HAL_GPIO_ReadPin>
@@ -540,7 +540,7 @@ char Read_Keypad(void) {
  8000656:	88fb      	ldrh	r3, [r7, #6]
  8000658:	f443 5300 	orr.w	r3, r3, #8192	@ 0x2000
  800065c:	80fb      	strh	r3, [r7, #6]
-    if (READ_INPUT(C3) == ON) currentState |= (1 << 14); // keyHash
+	if (READ_INPUT(C3) == ON) currentState |= (1 << 14); // keyHash
  800065e:	f44f 7100 	mov.w	r1, #512	@ 0x200
  8000662:	4845      	ldr	r0, [pc, #276]	@ (8000778 <Read_Keypad+0x2c0>)
  8000664:	f000 fdf0 	bl	8001248 <HAL_GPIO_ReadPin>
@@ -550,7 +550,7 @@ char Read_Keypad(void) {
  800066e:	88fb      	ldrh	r3, [r7, #6]
  8000670:	f443 4380 	orr.w	r3, r3, #16384	@ 0x4000
  8000674:	80fb      	strh	r3, [r7, #6]
-    if (READ_INPUT(C4) == ON) currentState |= (1 << 15); // keyD
+	if (READ_INPUT(C4) == ON) currentState |= (1 << 15); // keyD
  8000676:	f44f 6180 	mov.w	r1, #1024	@ 0x400
  800067a:	483f      	ldr	r0, [pc, #252]	@ (8000778 <Read_Keypad+0x2c0>)
  800067c:	f000 fde4 	bl	8001248 <HAL_GPIO_ReadPin>
@@ -561,28 +561,28 @@ char Read_Keypad(void) {
  8000688:	ea6f 4343 	mvn.w	r3, r3, lsl #17
  800068c:	ea6f 4353 	mvn.w	r3, r3, lsr #17
  8000690:	80fb      	strh	r3, [r7, #6]
-    GPIO_WRITE(R4, OFF);
+	GPIO_WRITE(R4, OFF);
  8000692:	2200      	movs	r2, #0
  8000694:	f44f 4180 	mov.w	r1, #16384	@ 0x4000
  8000698:	4837      	ldr	r0, [pc, #220]	@ (8000778 <Read_Keypad+0x2c0>)
  800069a:	f000 fded 	bl	8001278 <HAL_GPIO_WritePin>
 
-    // Zaman kontrolü ile debouncing işlemi
-    if (currentState != lastState) {
+	// Zaman kontrolü ile debouncing işlemi
+	if (currentState != lastState) {
  800069e:	4b37      	ldr	r3, [pc, #220]	@ (800077c <Read_Keypad+0x2c4>)
  80006a0:	881b      	ldrh	r3, [r3, #0]
  80006a2:	88fa      	ldrh	r2, [r7, #6]
  80006a4:	429a      	cmp	r2, r3
  80006a6:	d004      	beq.n	80006b2 <Read_Keypad+0x1fa>
-        lastDebounceTime = HAL_GetTick();  // Zamanlayıcıyı sıfırla
+		lastDebounceTime = HAL_GetTick();  // Zamanlayıcıyı sıfırla
  80006a8:	f000 fb40 	bl	8000d2c <HAL_GetTick>
  80006ac:	4603      	mov	r3, r0
  80006ae:	4a34      	ldr	r2, [pc, #208]	@ (8000780 <Read_Keypad+0x2c8>)
  80006b0:	6013      	str	r3, [r2, #0]
-    }
+	}
 
-    // Debounce gecikmesi sonrası tuş kontrolü
-    if ((HAL_GetTick() - lastDebounceTime) > DEBOUNCE_DELAY_MS) {
+	// Debounce gecikmesi sonrası tuş kontrolü
+	if ((HAL_GetTick() - lastDebounceTime) > DEBOUNCE_DELAY_MS) {
  80006b2:	f000 fb3b 	bl	8000d2c <HAL_GetTick>
  80006b6:	4602      	mov	r2, r0
  80006b8:	4b31      	ldr	r3, [pc, #196]	@ (8000780 <Read_Keypad+0x2c8>)
@@ -590,12 +590,12 @@ char Read_Keypad(void) {
  80006bc:	1ad3      	subs	r3, r2, r3
  80006be:	2b64      	cmp	r3, #100	@ 0x64
  80006c0:	f240 80bc 	bls.w	800083c <Read_Keypad+0x384>
-        keypad_state.all_keys = currentState;
+		keypad_state.all_keys = currentState;
  80006c4:	4a2f      	ldr	r2, [pc, #188]	@ (8000784 <Read_Keypad+0x2cc>)
  80006c6:	88fb      	ldrh	r3, [r7, #6]
  80006c8:	8013      	strh	r3, [r2, #0]
 
-        if (keypad_state.keys.key1 && keypad_state.keys.key3) {
+		if (keypad_state.keys.key1 && keypad_state.keys.key3) {
  80006ca:	4b2e      	ldr	r3, [pc, #184]	@ (8000784 <Read_Keypad+0x2cc>)
  80006cc:	781b      	ldrb	r3, [r3, #0]
  80006ce:	f003 0301 	and.w	r3, r3, #1
@@ -608,10 +608,10 @@ char Read_Keypad(void) {
  80006e0:	b2db      	uxtb	r3, r3
  80006e2:	2b00      	cmp	r3, #0
  80006e4:	d001      	beq.n	80006ea <Read_Keypad+0x232>
-            return 'H';  // 1 ve 3'e aynı anda basıldığında 'H' döndür
+			return 'H';  // 1 ve 3'e aynı anda basıldığında 'H' döndür
  80006e6:	2348      	movs	r3, #72	@ 0x48
  80006e8:	e0ac      	b.n	8000844 <Read_Keypad+0x38c>
-        } else if (keypad_state.keys.key1 && keypad_state.keys.key6) {
+		} else if (keypad_state.keys.key1 && keypad_state.keys.key6) {
  80006ea:	4b26      	ldr	r3, [pc, #152]	@ (8000784 <Read_Keypad+0x2cc>)
  80006ec:	781b      	ldrb	r3, [r3, #0]
  80006ee:	f003 0301 	and.w	r3, r3, #1
@@ -620,71 +620,71 @@ char Read_Keypad(void) {
  80006f6:	d008      	beq.n	800070a <Read_Keypad+0x252>
  80006f8:	4b22      	ldr	r3, [pc, #136]	@ (8000784 <Read_Keypad+0x2cc>)
  80006fa:	781b      	ldrb	r3, [r3, #0]
- 80006fc:	f003 0320 	and.w	r3, r3, #32
+ 80006fc:	f003 0340 	and.w	r3, r3, #64	@ 0x40
  8000700:	b2db      	uxtb	r3, r3
  8000702:	2b00      	cmp	r3, #0
  8000704:	d001      	beq.n	800070a <Read_Keypad+0x252>
-            return 'M';  // 1 ve 6'ya aynı anda basıldığında 'M' döndür
+			return 'M';  // 1 ve 6'ya aynı anda basıldığında 'M' döndür
  8000706:	234d      	movs	r3, #77	@ 0x4d
  8000708:	e09c      	b.n	8000844 <Read_Keypad+0x38c>
-        } else if (keypad_state.keys.key1) {
+		} else if (keypad_state.keys.key1) {
  800070a:	4b1e      	ldr	r3, [pc, #120]	@ (8000784 <Read_Keypad+0x2cc>)
  800070c:	781b      	ldrb	r3, [r3, #0]
  800070e:	f003 0301 	and.w	r3, r3, #1
  8000712:	b2db      	uxtb	r3, r3
  8000714:	2b00      	cmp	r3, #0
  8000716:	d001      	beq.n	800071c <Read_Keypad+0x264>
-            return '1';  // Yalnızca 1'e basıldığında '1' döndür
+			return '1';  // Yalnızca 1'e basıldığında '1' döndür
  8000718:	2331      	movs	r3, #49	@ 0x31
  800071a:	e093      	b.n	8000844 <Read_Keypad+0x38c>
-        } else if (keypad_state.keys.key2) {
+		} else if (keypad_state.keys.key2) {
  800071c:	4b19      	ldr	r3, [pc, #100]	@ (8000784 <Read_Keypad+0x2cc>)
  800071e:	781b      	ldrb	r3, [r3, #0]
  8000720:	f003 0302 	and.w	r3, r3, #2
  8000724:	b2db      	uxtb	r3, r3
  8000726:	2b00      	cmp	r3, #0
  8000728:	d001      	beq.n	800072e <Read_Keypad+0x276>
-            return '2';  // Yalnızca 2'ye basıldığında '2' döndür
+			return '2';  // Yalnızca 2'ye basıldığında '2' döndür
  800072a:	2332      	movs	r3, #50	@ 0x32
  800072c:	e08a      	b.n	8000844 <Read_Keypad+0x38c>
-        } else if (keypad_state.keys.key3) {
+		} else if (keypad_state.keys.key3) {
  800072e:	4b15      	ldr	r3, [pc, #84]	@ (8000784 <Read_Keypad+0x2cc>)
  8000730:	781b      	ldrb	r3, [r3, #0]
  8000732:	f003 0304 	and.w	r3, r3, #4
  8000736:	b2db      	uxtb	r3, r3
  8000738:	2b00      	cmp	r3, #0
  800073a:	d001      	beq.n	8000740 <Read_Keypad+0x288>
-            return '3';  // Yalnızca 3'e basıldığında '3' döndür
+			return '3';  // Yalnızca 3'e basıldığında '3' döndür
  800073c:	2333      	movs	r3, #51	@ 0x33
  800073e:	e081      	b.n	8000844 <Read_Keypad+0x38c>
-        } else if (keypad_state.keys.key4) {
+		} else if (keypad_state.keys.key4) {
  8000740:	4b10      	ldr	r3, [pc, #64]	@ (8000784 <Read_Keypad+0x2cc>)
  8000742:	781b      	ldrb	r3, [r3, #0]
- 8000744:	f003 0308 	and.w	r3, r3, #8
+ 8000744:	f003 0310 	and.w	r3, r3, #16
  8000748:	b2db      	uxtb	r3, r3
  800074a:	2b00      	cmp	r3, #0
  800074c:	d001      	beq.n	8000752 <Read_Keypad+0x29a>
-            return '4';  // Yalnızca 4'e basıldığında '4' döndür
+			return '4';  // Yalnızca 4'e basıldığında '4' döndür
  800074e:	2334      	movs	r3, #52	@ 0x34
  8000750:	e078      	b.n	8000844 <Read_Keypad+0x38c>
-        } else if (keypad_state.keys.key5) {
+		} else if (keypad_state.keys.key5) {
  8000752:	4b0c      	ldr	r3, [pc, #48]	@ (8000784 <Read_Keypad+0x2cc>)
  8000754:	781b      	ldrb	r3, [r3, #0]
- 8000756:	f003 0310 	and.w	r3, r3, #16
+ 8000756:	f003 0320 	and.w	r3, r3, #32
  800075a:	b2db      	uxtb	r3, r3
  800075c:	2b00      	cmp	r3, #0
  800075e:	d001      	beq.n	8000764 <Read_Keypad+0x2ac>
-            return '5';  // Yalnızca 5'e basıldığında '5' döndür
+			return '5';  // Yalnızca 5'e basıldığında '5' döndür
  8000760:	2335      	movs	r3, #53	@ 0x35
  8000762:	e06f      	b.n	8000844 <Read_Keypad+0x38c>
-        } else if (keypad_state.keys.key6) {
+		} else if (keypad_state.keys.key6) {
  8000764:	4b07      	ldr	r3, [pc, #28]	@ (8000784 <Read_Keypad+0x2cc>)
  8000766:	781b      	ldrb	r3, [r3, #0]
- 8000768:	f003 0320 	and.w	r3, r3, #32
+ 8000768:	f003 0340 	and.w	r3, r3, #64	@ 0x40
  800076c:	b2db      	uxtb	r3, r3
  800076e:	2b00      	cmp	r3, #0
  8000770:	d00a      	beq.n	8000788 <Read_Keypad+0x2d0>
-            return '6';  // Yalnızca 6'ya basıldığında '6' döndür
+			return '6';  // Yalnızca 6'ya basıldığında '6' döndür
  8000772:	2336      	movs	r3, #54	@ 0x36
  8000774:	e066      	b.n	8000844 <Read_Keypad+0x38c>
  8000776:	bf00      	nop
@@ -692,114 +692,114 @@ char Read_Keypad(void) {
  800077c:	20000030 	.word	0x20000030
  8000780:	2000002c 	.word	0x2000002c
  8000784:	20000028 	.word	0x20000028
-        } else if (keypad_state.keys.key7) {
+		} else if (keypad_state.keys.key7) {
  8000788:	4b30      	ldr	r3, [pc, #192]	@ (800084c <Read_Keypad+0x394>)
- 800078a:	781b      	ldrb	r3, [r3, #0]
- 800078c:	f003 0340 	and.w	r3, r3, #64	@ 0x40
+ 800078a:	785b      	ldrb	r3, [r3, #1]
+ 800078c:	f003 0301 	and.w	r3, r3, #1
  8000790:	b2db      	uxtb	r3, r3
  8000792:	2b00      	cmp	r3, #0
  8000794:	d001      	beq.n	800079a <Read_Keypad+0x2e2>
-            return '7';  // Yalnızca 7'ye basıldığında '7' döndür
+			return '7';  // Yalnızca 7'ye basıldığında '7' döndür
  8000796:	2337      	movs	r3, #55	@ 0x37
  8000798:	e054      	b.n	8000844 <Read_Keypad+0x38c>
-        } else if (keypad_state.keys.key8) {
+		} else if (keypad_state.keys.key8) {
  800079a:	4b2c      	ldr	r3, [pc, #176]	@ (800084c <Read_Keypad+0x394>)
- 800079c:	781b      	ldrb	r3, [r3, #0]
- 800079e:	f023 037f 	bic.w	r3, r3, #127	@ 0x7f
+ 800079c:	785b      	ldrb	r3, [r3, #1]
+ 800079e:	f003 0302 	and.w	r3, r3, #2
  80007a2:	b2db      	uxtb	r3, r3
  80007a4:	2b00      	cmp	r3, #0
  80007a6:	d001      	beq.n	80007ac <Read_Keypad+0x2f4>
-            return '8';  // Yalnızca 8'e basıldığında '8' döndür
+			return '8';  // Yalnızca 8'e basıldığında '8' döndür
  80007a8:	2338      	movs	r3, #56	@ 0x38
  80007aa:	e04b      	b.n	8000844 <Read_Keypad+0x38c>
-        } else if (keypad_state.keys.key9) {
+		} else if (keypad_state.keys.key9) {
  80007ac:	4b27      	ldr	r3, [pc, #156]	@ (800084c <Read_Keypad+0x394>)
  80007ae:	785b      	ldrb	r3, [r3, #1]
- 80007b0:	f003 0301 	and.w	r3, r3, #1
+ 80007b0:	f003 0304 	and.w	r3, r3, #4
  80007b4:	b2db      	uxtb	r3, r3
  80007b6:	2b00      	cmp	r3, #0
  80007b8:	d001      	beq.n	80007be <Read_Keypad+0x306>
-            return '9';  // Yalnızca 9'a basıldığında '9' döndür
+			return '9';  // Yalnızca 9'a basıldığında '9' döndür
  80007ba:	2339      	movs	r3, #57	@ 0x39
  80007bc:	e042      	b.n	8000844 <Read_Keypad+0x38c>
-        } else if (keypad_state.keys.key0) {
+		} else if (keypad_state.keys.key0) {
  80007be:	4b23      	ldr	r3, [pc, #140]	@ (800084c <Read_Keypad+0x394>)
  80007c0:	785b      	ldrb	r3, [r3, #1]
- 80007c2:	f003 0340 	and.w	r3, r3, #64	@ 0x40
+ 80007c2:	f003 0320 	and.w	r3, r3, #32
  80007c6:	b2db      	uxtb	r3, r3
  80007c8:	2b00      	cmp	r3, #0
  80007ca:	d001      	beq.n	80007d0 <Read_Keypad+0x318>
-            return '0';  // Yalnızca 0'a basıldığında '0' döndür
+			return '0';  // Yalnızca 0'a basıldığında '0' döndür
  80007cc:	2330      	movs	r3, #48	@ 0x30
  80007ce:	e039      	b.n	8000844 <Read_Keypad+0x38c>
-        } else if (keypad_state.keys.keyA) {
+		} else if (keypad_state.keys.keyA) {
  80007d0:	4b1e      	ldr	r3, [pc, #120]	@ (800084c <Read_Keypad+0x394>)
- 80007d2:	785b      	ldrb	r3, [r3, #1]
- 80007d4:	f003 0302 	and.w	r3, r3, #2
+ 80007d2:	781b      	ldrb	r3, [r3, #0]
+ 80007d4:	f003 0308 	and.w	r3, r3, #8
  80007d8:	b2db      	uxtb	r3, r3
  80007da:	2b00      	cmp	r3, #0
  80007dc:	d001      	beq.n	80007e2 <Read_Keypad+0x32a>
-            return 'A';  // Yalnızca A'ya basıldığında 'A' döndür
+			return 'A';  // Yalnızca A'ya basıldığında 'A' döndür
  80007de:	2341      	movs	r3, #65	@ 0x41
  80007e0:	e030      	b.n	8000844 <Read_Keypad+0x38c>
-        } else if (keypad_state.keys.keyB) {
+		} else if (keypad_state.keys.keyB) {
  80007e2:	4b1a      	ldr	r3, [pc, #104]	@ (800084c <Read_Keypad+0x394>)
- 80007e4:	785b      	ldrb	r3, [r3, #1]
- 80007e6:	f003 0304 	and.w	r3, r3, #4
+ 80007e4:	781b      	ldrb	r3, [r3, #0]
+ 80007e6:	f023 037f 	bic.w	r3, r3, #127	@ 0x7f
  80007ea:	b2db      	uxtb	r3, r3
  80007ec:	2b00      	cmp	r3, #0
  80007ee:	d001      	beq.n	80007f4 <Read_Keypad+0x33c>
-            return 'B';  // Yalnızca B'ye basıldığında 'B' döndür
+			return 'B';  // Yalnızca B'ye basıldığında 'B' döndür
  80007f0:	2342      	movs	r3, #66	@ 0x42
  80007f2:	e027      	b.n	8000844 <Read_Keypad+0x38c>
-        } else if (keypad_state.keys.keyC) {
+		} else if (keypad_state.keys.keyC) {
  80007f4:	4b15      	ldr	r3, [pc, #84]	@ (800084c <Read_Keypad+0x394>)
  80007f6:	785b      	ldrb	r3, [r3, #1]
  80007f8:	f003 0308 	and.w	r3, r3, #8
  80007fc:	b2db      	uxtb	r3, r3
  80007fe:	2b00      	cmp	r3, #0
  8000800:	d001      	beq.n	8000806 <Read_Keypad+0x34e>
-            return 'C';  // Yalnızca C'ye basıldığında 'C' döndür
+			return 'C';  // Yalnızca C'ye basıldığında 'C' döndür
  8000802:	2343      	movs	r3, #67	@ 0x43
  8000804:	e01e      	b.n	8000844 <Read_Keypad+0x38c>
-        } else if (keypad_state.keys.keyD) {
+		} else if (keypad_state.keys.keyD) {
  8000806:	4b11      	ldr	r3, [pc, #68]	@ (800084c <Read_Keypad+0x394>)
  8000808:	785b      	ldrb	r3, [r3, #1]
- 800080a:	f003 0310 	and.w	r3, r3, #16
+ 800080a:	f023 037f 	bic.w	r3, r3, #127	@ 0x7f
  800080e:	b2db      	uxtb	r3, r3
  8000810:	2b00      	cmp	r3, #0
  8000812:	d001      	beq.n	8000818 <Read_Keypad+0x360>
-            return 'D';  // Yalnızca D'ye basıldığında 'D' döndür
+			return 'D';  // Yalnızca D'ye basıldığında 'D' döndür
  8000814:	2344      	movs	r3, #68	@ 0x44
  8000816:	e015      	b.n	8000844 <Read_Keypad+0x38c>
-        } else if (keypad_state.keys.keyStar) {
+		} else if (keypad_state.keys.keyStar) {
  8000818:	4b0c      	ldr	r3, [pc, #48]	@ (800084c <Read_Keypad+0x394>)
  800081a:	785b      	ldrb	r3, [r3, #1]
- 800081c:	f003 0320 	and.w	r3, r3, #32
+ 800081c:	f003 0310 	and.w	r3, r3, #16
  8000820:	b2db      	uxtb	r3, r3
  8000822:	2b00      	cmp	r3, #0
  8000824:	d001      	beq.n	800082a <Read_Keypad+0x372>
-            return '*';  // Yalnızca '*' tuşuna basıldığında '*' döndür
+			return '*';  // Yalnızca '*' tuşuna basıldığında '*' döndür
  8000826:	232a      	movs	r3, #42	@ 0x2a
  8000828:	e00c      	b.n	8000844 <Read_Keypad+0x38c>
-        } else if (keypad_state.keys.keyHash) {
+		} else if (keypad_state.keys.keyHash) {
  800082a:	4b08      	ldr	r3, [pc, #32]	@ (800084c <Read_Keypad+0x394>)
  800082c:	785b      	ldrb	r3, [r3, #1]
- 800082e:	f023 037f 	bic.w	r3, r3, #127	@ 0x7f
+ 800082e:	f003 0340 	and.w	r3, r3, #64	@ 0x40
  8000832:	b2db      	uxtb	r3, r3
  8000834:	2b00      	cmp	r3, #0
  8000836:	d001      	beq.n	800083c <Read_Keypad+0x384>
-            return '#';  // Yalnızca '#' tuşuna basıldığında '#' döndür
+			return '#';  // Yalnızca '#' tuşuna basıldığında '#' döndür
  8000838:	2323      	movs	r3, #35	@ 0x23
  800083a:	e003      	b.n	8000844 <Read_Keypad+0x38c>
-        }
-    }
+		}
+	}
 
-    lastState = currentState;  // Son tuş durumunu sakla
+	lastState = currentState;  // Son tuş durumunu sakla
  800083c:	4a04      	ldr	r2, [pc, #16]	@ (8000850 <Read_Keypad+0x398>)
  800083e:	88fb      	ldrh	r3, [r7, #6]
  8000840:	8013      	strh	r3, [r2, #0]
-    return '\0';  // Hiçbir tuşa basılmadıysa boş karakter döndür
+	return '\0';  // Hiçbir tuşa basılmadıysa boş karakter döndür
  8000842:	2300      	movs	r3, #0
 }
  8000844:	4618      	mov	r0, r3
