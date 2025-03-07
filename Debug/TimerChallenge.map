@@ -3562,19 +3562,19 @@ LOAD C:/ST/STM32CubeIDE_1.16.1/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.ext
  .debug_macro   0x0000118e      0x1c5 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
  .debug_macro   0x00001353      0x1c4 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
 
-.debug_line     0x00000000     0xaa8d
+.debug_line     0x00000000     0xaa8e
  .debug_line    0x00000000      0x87f ./Core/Src/main.o
  .debug_line    0x0000087f      0x772 ./Core/Src/stm32f4xx_hal_msp.o
  .debug_line    0x00000ff1      0x811 ./Core/Src/stm32f4xx_it.o
  .debug_line    0x00001802      0x7bb ./Core/Src/system_stm32f4xx.o
- .debug_line    0x00001fbd      0x7dd ./Core/Src/timer.o
- .debug_line    0x0000279a       0x7a ./Core/Startup/startup_stm32f407vgtx.o
- .debug_line    0x00002814      0xa24 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
- .debug_line    0x00003238      0xd16 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
- .debug_line    0x00003f4e      0xbb0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
- .debug_line    0x00004afe      0xdad ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
- .debug_line    0x000058ab     0x37c8 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
- .debug_line    0x00009073     0x1a1a ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
+ .debug_line    0x00001fbd      0x7de ./Core/Src/timer.o
+ .debug_line    0x0000279b       0x7a ./Core/Startup/startup_stm32f407vgtx.o
+ .debug_line    0x00002815      0xa24 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_line    0x00003239      0xd16 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_line    0x00003f4f      0xbb0 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_line    0x00004aff      0xdad ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_line    0x000058ac     0x37c8 ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o
+ .debug_line    0x00009074     0x1a1a ./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o
 
 .debug_str      0x00000000    0xc5186
  .debug_str     0x00000000    0xc2a28 ./Core/Src/main.o

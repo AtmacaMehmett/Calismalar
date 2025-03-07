@@ -39,11 +39,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  17 .debug_macro  00001517  00000000  00000000  0000f9d9  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   0000aa8d  00000000  00000000  00010ef0  2**0
+ 18 .debug_line   0000aa8e  00000000  00000000  00010ef0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000c5186  00000000  00000000  0001b97d  2**0
+ 19 .debug_str    000c5186  00000000  00000000  0001b97e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .comment      00000043  00000000  00000000  000e0b03  2**0
+ 20 .comment      00000043  00000000  00000000  000e0b04  2**0
                   CONTENTS, READONLY
  21 .debug_frame  0000279c  00000000  00000000  000e0b48  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -1335,6 +1335,8 @@ void clearFlags()
 
 080009b0 <timerMissions>:
 
+
+
 void timerMissions()
 {
  80009b0:	b580      	push	{r7, lr}
@@ -1372,8 +1374,8 @@ void timerMissions()
  80009e0:	b2db      	uxtb	r3, r3
  80009e2:	2b00      	cmp	r3, #0
  80009e4:	d004      	beq.n	80009f0 <timerMissions+0x40>
-		TOGGLE_PIN(LED4);  // LED4-TURUNCU
- 80009e6:	f44f 5180 	mov.w	r1, #4096	@ 0x1000
+		TOGGLE_PIN(LED3);  // LED4-TURUNCU
+ 80009e6:	f44f 5100 	mov.w	r1, #8192	@ 0x2000
  80009ea:	4803      	ldr	r0, [pc, #12]	@ (80009f8 <timerMissions+0x48>)
  80009ec:	f000 fb6d 	bl	80010ca <HAL_GPIO_TogglePin>
 	}
