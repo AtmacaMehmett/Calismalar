@@ -1,0 +1,4 @@
+../Core/Src/timer.c:15:6:HAL_TIM_PeriodElapsedCallback	16	static
+../Core/Src/timer.c:25:6:setFlags	4	static
+../Core/Src/timer.c:46:6:clearFlags	4	static
+../Core/Src/timer.c:62:6:timerMissions	8	static

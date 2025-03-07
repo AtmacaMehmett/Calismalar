@@ -34,34 +34,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := calismalar
+BUILD_ARTIFACT_NAME := TimerChallenge
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-calismalar.elf \
+TimerChallenge.elf \
 
 MAP_FILES += \
-calismalar.map \
+TimerChallenge.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-calismalar.list \
+TimerChallenge.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: calismalar.elf secondary-outputs
+main-build: TimerChallenge.elf secondary-outputs
 
 # Tool invocations
-calismalar.elf calismalar.map: $(OBJS) $(USER_OBJS) C:\Users\dell\Desktop\STM32\ Projects\calismalar\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "calismalar.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\dell\Desktop\STM32 Projects\calismalar\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="calismalar.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+TimerChallenge.elf TimerChallenge.map: $(OBJS) $(USER_OBJS) C:\Users\dell\Desktop\STM32\ Projects\TimerChallenge\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "TimerChallenge.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\dell\Desktop\STM32 Projects\TimerChallenge\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TimerChallenge.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -70,14 +70,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-calismalar.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "calismalar.list"
+TimerChallenge.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "TimerChallenge.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) calismalar.elf calismalar.list calismalar.map default.size.stdout
+	-$(RM) TimerChallenge.elf TimerChallenge.list TimerChallenge.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)

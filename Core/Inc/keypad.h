@@ -11,31 +11,3 @@ char Read_Keypad(void);
 #endif  // KEYPAD_H
 
 
-
-
-
-///*
-// * keypad.h
-// *
-// *  Created on: Feb 25, 2025
-// *      Author: Yasin Batuhan URAL
-// */
-//
-//#ifndef keyPad_H
-//#define keyPad_H
-//
-//#include "main.h"
-//#include "macro.h"
-//
-//
-//#define FACTORY_RESET 578
-//
-//
-//
-//
-//#define KEYPAD_D   32589
-//// Keypad fonksiyonları
-//char Read_Keypad(void);
-//
-//
-//#endif
