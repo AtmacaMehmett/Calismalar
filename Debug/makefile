@@ -34,34 +34,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := TimerChallenge
+BUILD_ARTIFACT_NAME := ChallengeTimer
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-TimerChallenge.elf \
+ChallengeTimer.elf \
 
 MAP_FILES += \
-TimerChallenge.map \
+ChallengeTimer.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-TimerChallenge.list \
+ChallengeTimer.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: TimerChallenge.elf secondary-outputs
+main-build: ChallengeTimer.elf secondary-outputs
 
 # Tool invocations
-TimerChallenge.elf TimerChallenge.map: $(OBJS) $(USER_OBJS) C:\Users\dell\Desktop\STM32\ Projects\TimerChallenge\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "TimerChallenge.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\dell\Desktop\STM32 Projects\TimerChallenge\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TimerChallenge.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+ChallengeTimer.elf ChallengeTimer.map: $(OBJS) $(USER_OBJS) C:\Users\dell\Desktop\STM32\ Projects\ChallengeTimer\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "ChallengeTimer.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\dell\Desktop\STM32 Projects\ChallengeTimer\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ChallengeTimer.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -70,14 +70,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-TimerChallenge.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "TimerChallenge.list"
+ChallengeTimer.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "ChallengeTimer.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) TimerChallenge.elf TimerChallenge.list TimerChallenge.map default.size.stdout
+	-$(RM) ChallengeTimer.elf ChallengeTimer.list ChallengeTimer.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)

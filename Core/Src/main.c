@@ -24,6 +24,7 @@
 #include "keypad.h"
 #include "macro.h"
 #include "timer.h"
+#include "mission.h"
 
 /* USER CODE END Includes */
 
