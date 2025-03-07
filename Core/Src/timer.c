@@ -75,7 +75,7 @@ void timerMissions()
 
 	// Eğer 500 ms bayrağı kalktıysa, LED3'ü yak
 	if (flag500ms) {
-		TOGGLE_PIN(LED3);  // LED4-TURUNCU
+		TOGGLE_PIN(LED4);  // LED4-TURUNCU
 	}
 
 }
