@@ -76,10 +76,15 @@ char Read_Keypad(void) {
 	if ((HAL_GetTick() - lastDebounceTime) > DEBOUNCE_DELAY_MS) {
 		keypad_state.all_keys = currentState;
 
+		// Basılı olan tuş sayısını hesapla
+		uint8_t pressedKeys = __builtin_popcount(currentState);
+
 		if (keypad_state.keys.key1 && keypad_state.keys.key3) {
 			return 'H';  // 1 ve 3'e aynı anda basıldığında 'H' döndür
 		} else if (keypad_state.keys.key1 && keypad_state.keys.key6) {
 			return 'M';  // 1 ve 6'ya aynı anda basıldığında 'M' döndür
+		} else if (pressedKeys > 1) {
+			return '\0';  // Tanımlı kombinasyonlar harici çift basışlarda '\0' dön
 		} else if (keypad_state.keys.key1) {
 			return '1';  // Yalnızca 1'e basıldığında '1' döndür
 		} else if (keypad_state.keys.key2) {
